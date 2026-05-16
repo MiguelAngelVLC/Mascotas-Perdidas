@@ -1,0 +1,12 @@
+# Configuración para desarrollo local
+# Usar con: -Dspring.profiles.active=dev
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update   # crea/actualiza tablas automáticamente en desarrollo
+    show-sql: true
+
+logging:
+  level:
+    com.mascotasperdidas: DEBUG
+    org.hibernate.SQL: DEBUG

@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { font-family: 'Roboto', sans-serif; }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-light;
+  }
+}
+
+@layer components {
+  /* Botones */
+  .btn-primary {
+    @apply bg-primary-light hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-full
+           transition-all duration-200 focus-visible:outline-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-6 rounded-full
+           transition-all duration-200 focus-visible:outline-2;
+  }
+
+  .btn-teal {
+    @apply bg-teal hover:bg-teal-dark text-gray-900 font-medium py-2 px-6 rounded-full
+           transition-all duration-200 focus-visible:outline-2;
+  }
+
+  .btn-red {
+    @apply bg-red-pet hover:bg-red-500 text-white font-medium py-2 px-6 rounded-full
+           transition-all duration-200 focus-visible:outline-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-current bg-transparent font-medium py-2 px-6 rounded-full
+           transition-all duration-200 focus-visible:outline-2;
+  }
+
+  /* Tarjetas */
+  .card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-card border border-gray-200;
+  }
+
+  /* Inputs */
+  .form-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900
+           focus:outline-none focus:ring-2 focus:ring-primary-light focus:border-transparent
+           disabled:bg-gray-100 disabled:cursor-not-allowed;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold text-gray-700 mb-1;
+  }
+
+  .form-error {
+    @apply text-red-500 text-xs mt-1;
+  }
+
+  /* Badges */
+  .badge-lost {
+    @apply bg-red-pet text-black text-xs font-medium px-3 py-1 rounded-full;
+  }
+
+  .badge-found {
+    @apply bg-teal text-black text-xs font-medium px-3 py-1 rounded-full;
+  }
+
+  /* Section titles */
+  .section-title {
+    @apply text-3xl font-bold text-white;
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #529bee; border-radius: 3px; }

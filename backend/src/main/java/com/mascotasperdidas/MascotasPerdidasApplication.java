@@ -1,0 +1,11 @@
+package com.mascotasperdidas;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MascotasPerdidasApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MascotasPerdidasApplication.class, args);
+    }
+}

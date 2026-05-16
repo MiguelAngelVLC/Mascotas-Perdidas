@@ -1,59 +1,89 @@
-# MascotasPerdidas
+# Mascotas Perdidas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+Plataforma web completa para reportar y buscar mascotas perdidas o encontradas.
 
-## Development server
+## Tecnologías
 
-To start a local development server, run:
+| Capa       | Tecnología                          |
+|------------|-------------------------------------|
+| Frontend   | Angular 17 + Tailwind CSS           |
+| Backend    | Spring Boot 3.2 + Spring Security   |
+| Base datos | MariaDB 10.6+                       |
+| Auth       | JWT (JJWT 0.12)                     |
+| Imágenes   | Multipart upload al sistema de archivos del servidor |
+
+## Estructura del proyecto
+
+```
+MascotasPerdidas/
+├── frontend/     # Angular standalone app
+├── backend/      # Spring Boot REST API
+├── database/     # Scripts SQL (schema + seed)
+└── docs/         # Guía de estilos y despliegue
+```
+
+## Requisitos previos
+
+- Node.js 20+ y npm 10+
+- Angular CLI 17: `npm install -g @angular/cli`
+- Java 17+ y Maven 3.8+
+- MariaDB 10.6+ en ejecución local (puerto 3306)
+
+## Configuración de base de datos
+
+```sql
+CREATE DATABASE mascotas_perdidas CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'mp_user'@'localhost' IDENTIFIED BY 'mp_password';
+GRANT ALL PRIVILEGES ON mascotas_perdidas.* TO 'mp_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Después ejecutar los scripts SQL:
+```bash
+mysql -u mp_user -p mascotas_perdidas < database/schema.sql
+mysql -u mp_user -p mascotas_perdidas < database/seed.sql
+```
+
+## Arrancar el backend
 
 ```bash
+cd backend
+mvn spring-boot:run
+```
+Disponible en `http://localhost:8080`
+
+## Arrancar el frontend
+
+```bash
+cd frontend
+npm install
 ng serve
 ```
+Disponible en `http://localhost:4200`
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Variables de entorno para producción
 
-## Code scaffolding
+Crear `backend/src/main/resources/application-prod.yml` con:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```yaml
+spring:
+  datasource:
+    url: jdbc:mariadb://<HOST>:3306/mascotas_perdidas
+    username: <DB_USER>
+    password: <DB_PASS>
+app:
+  jwt-secret: <SECRET_256_BIT>
+  upload-dir: /var/www/mascotas_perdidas/uploads
+  cors-origins: https://tudominio.com
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Paleta de colores
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| Variable           | Hex       | Uso                         |
+|--------------------|-----------|----------------------------|
+| `primary`          | `#023d7f` | Fondo principal             |
+| `primary-light`    | `#529bee` | Activos, botones primarios  |
+| `teal`             | `#4ecdc4` | ENCONTRADO, CTA, logo       |
+| `red-pet`          | `#ff6b6b` | PERDIDO, alertas            |
+| `yellow-pet`       | `#ffe66d` | Estadísticas totales        |
+| `nav`              | `#33a9c7` | Barra de navegación         |
