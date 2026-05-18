@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://root:oCLwRzeEqtJnSYOGsAAnJGXkBXtmrepU@mysql.railway.internal:3306/railway?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://root:oCLwRzeEqtJnSYOGsAAnJGXkBXtmrepU@autorack.proxy.rlwy.net:10561/railway?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC}
     username: ${SPRING_DATASOURCE_USERNAME:mp_user}
     password: ${SPRING_DATASOURCE_PASSWORD:mp_password}
     driver-class-name: org.mariadb.jdbc.Driver
