@@ -80,7 +80,7 @@ public class SecurityConfig {
         cfg.setAllowedHeaders(List.of("*"));
         cfg.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", cfg);
+        source.registerCorsConfiguration("/**", cfg);
         return source;
     }
 }
